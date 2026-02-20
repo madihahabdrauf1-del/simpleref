@@ -44,6 +44,11 @@ export default function Home() {
     setLoading(false);
   };
 
+    const copyToClipboard = (link: string) => {
+      navigator.clipboard.writeText(link);
+      alert("Link copied to clipboard!");
+    };
+
   return (
     <main className="flex min-h-screen flex-col items-center p-12 bg-gray-50 text-black">
       <div className="w-full max-w-2xl bg-white p-8 rounded-2xl shadow-xl border border-gray-100 mb-8">
@@ -68,11 +73,19 @@ export default function Home() {
         </div>
 
         {referralLink && (
-          <div className="mt-4 p-4 bg-green-50 border border-green-100 rounded-xl">
-            <p className="text-xs text-green-800 font-bold mb-1">Link Generated!</p>
-            <code className="text-sm text-green-700">{referralLink}</code>
+        <div className="mt-4 p-4 bg-green-50 border border-green-100 rounded-xl">
+          <p className="text-xs text-green-800 font-bold mb-1">Link Generated!</p>
+          <div className="flex items-center gap-2">
+            <code className="text-sm text-green-700 flex-1">{referralLink}</code>
+            <button
+              onClick={() => copyToClipboard(referralLink)}
+              className="bg-green-600 text-white px-4 py-2 rounded-lg text-xs hover:bg-green-700 transition"
+            >
+              Copy
+            </button>
           </div>
-        )}
+        </div>
+      )}
       </div>
 
       {/* 3. THE ANALYTICS TABLE */}
@@ -81,19 +94,30 @@ export default function Home() {
           <h2 className="font-bold text-gray-700">Your Analytics</h2>
         </div>
         <table className="w-full text-left text-sm">
+          
           <thead>
             <tr className="text-gray-400 border-b border-gray-50">
               <th className="p-4 font-semibold">Short Code</th>
               <th className="p-4 font-semibold">Destination</th>
               <th className="p-4 font-semibold text-right">Clicks</th>
+              <th className="p-4 font-semibold text-right">Action</th>
             </tr>
           </thead>
+          
           <tbody>
             {links.map((link) => (
               <tr key={link.id} className="border-b border-gray-50 hover:bg-gray-50 transition">
                 <td className="p-4 font-mono text-blue-600">/ref/{link.short_code}</td>
                 <td className="p-4 text-gray-600 truncate max-w-[200px]">{link.original_url}</td>
                 <td className="p-4 text-right font-bold text-gray-900">{link.click_count || 0}</td>
+                <td className="p-4 text-right">
+                  <button
+                    onClick={() => copyToClipboard(`${window.location.origin}/ref/${link.short_code}`)}
+                    className="bg-blue-500 text-white px-3 py-1 rounded-lg text-xs hover:bg-blue-600 transition"
+                  >
+                    Copy
+                  </button>
+                </td>
               </tr>
             ))}
           </tbody>

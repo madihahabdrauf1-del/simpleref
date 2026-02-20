@@ -1,8 +1,13 @@
 import { supabase } from "@/app/supabase";
 import { redirect } from "next/navigation";
 
-export default async function RedirectPage({ params }: { params: { code: string } }) {
-  const { code } = await params;
+export default async function RedirectPage({ 
+  params 
+}: { 
+  params: Promise<{ code: string }> | { code: string }
+}) {
+  // Safe for both Next.js 14 and 15
+  const { code } = await Promise.resolve(params);
 
   // 1. Fetch the original URL AND the current click count
   const { data, error } = await supabase
