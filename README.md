@@ -1,7 +1,7 @@
 SimpleRef: Full-Stack Affiliate Link Tracker
 SimpleRef is a high-performance referral link generator built with Next.js, Tailwind CSS, and Supabase. It allows users to transform long destination URLs into trackable short links and monitor click analytics in real-time.
 
-✨ Key Features
+Key Features
 Dynamic Link Generation: Creates unique, random short codes for any URL.
 
 Real-time Analytics: Tracks every click and updates the dashboard instantly using Supabase.
@@ -10,21 +10,21 @@ Performant Redirects: Utilizes Next.js Dynamic Routes for near-instant server-si
 
 Modern UI: Responsive, "startup-style" interface built with Tailwind CSS v4.
 
-🛠️ Tech Stack
+Tech Stack
 Frontend: Next.js (App Router), React, Tailwind CSS.
 
 Backend/Database: Supabase (PostgreSQL).
 
 Deployment: Vercel (Ready for deployment).
 
-🏗️ Technical Implementation
+Technical Implementation
 Server Components: Used for the /ref/[code] route to handle logic on the server, ensuring faster redirects and better SEO.
 
 Environment Variables: Securely managed API keys using .env.local to prevent sensitive data leaks.
 
 Asynchronous State Management: Leveraged async/await and React useEffect hooks to sync frontend UI with database states.
 
-🚀 Getting Started
+Getting Started
 Clone and Install:
 
 Bash
