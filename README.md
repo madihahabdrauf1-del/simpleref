@@ -18,26 +18,9 @@ Backend/Database: Supabase (PostgreSQL).
 Deployment: Vercel (Ready for deployment).
 
 Technical Implementation
-Server Components: Used for the /ref/[code] route to handle logic on the server, ensuring faster redirects and better SEO.
 
-Environment Variables: Securely managed API keys using .env.local to prevent sensitive data leaks.
+1. Server Components: Used for the /ref/[code] route to handle logic on the server, ensuring faster redirects and better SEO.
 
-Asynchronous State Management: Leveraged async/await and React useEffect hooks to sync frontend UI with database states.
+2. Environment Variables: Securely managed API keys using .env.local to prevent sensitive data leaks.
 
-Getting Started
-Clone and Install:
-
-Bash
-git clone [your-repo-link]
-cd simpleref
-npm install
-Set up Environment Variables:
-Create a .env.local file and add your Supabase credentials:
-
-Plaintext
-NEXT_PUBLIC_SUPABASE_URL=your_project_url
-NEXT_PUBLIC_SUPABASE_ANON_KEY=your_anon_key
-Run the Development Server:
-
-Bash
-npm run dev
+3. Asynchronous State Management: Leveraged async/await and React useEffect hooks to sync frontend UI with database states.
